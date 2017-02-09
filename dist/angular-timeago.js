@@ -592,7 +592,8 @@ angular.module('yaru22.angular-timeago').factory('timeAgo', ["$filter", "timeAgo
     } else if (/^\d+$/.test(input)) {
       return new Date(parseInt(input, 10));
     } else {
-      var s = (input || '').trim();
+      var s = (input || '').trim();      
+      s = s.replace(/\"/g, ''); // IE double quotes remove
       s = s.replace(/\.\d+/, ''); // remove milliseconds
       s = s.replace(/-/, '/').replace(/-/, '/');
       s = s.replace(/T/, ' ').replace(/Z/, ' UTC');
